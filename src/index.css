@@ -73,7 +73,7 @@ body {
   justify-content: flex-start;
   align-items: slex-start;
 }
-.peli-item {
+.tarea-item {
   flex-grow: 1;
   margin: 20px;
   margin-left: 20px;
@@ -102,10 +102,10 @@ button , input[type="submit"] , input[type="button"] {
   transition: all 600ms;
 
 }
-.peli-item .edit:hover {
+.tarea-item .edit:hover {
   background: #e77b00;
 }
-.peli-item .delete:hover {
+.tarea-item .delete:hover {
   background: #9b0202;
 }
 /* ESTILOS BARRA LATERAL: */
@@ -160,7 +160,7 @@ button , input[type="submit"] , input[type="button"] {
       align-items: center;
 
   }
-  .peli-item {
+  .tarea-item {
       width: 80%;
   }
 }

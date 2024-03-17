@@ -7,6 +7,7 @@ export const Aside = ({setListadoState}) => {
     descripcion:''
   })
 
+  const clave = 'tareas'
   const guardarEnStorage = (clave, elemento)=>{
      //guardo el listado en el local storage
      let elementos = JSON.parse(localStorage.getItem(clave));
@@ -34,7 +35,7 @@ export const Aside = ({setListadoState}) => {
     setTareas(tarea);
     //actualizo ahora el listado de elementos a mostrar en pantalla
     setListadoState( elementos => {
-      return [...elementos, peli];
+      return [...elementos, tarea];
     });
     guardarEnStorage('tareas', tarea);
    
