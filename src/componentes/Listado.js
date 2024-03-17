@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Inicio = () => {
+export const Listado = () => {
   return (
     <section className="content">
             <article className="peli-item">

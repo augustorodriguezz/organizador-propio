@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {BrowserRouter , Routes , Route } from 'react-router-dom';
 import { Inicio } from '../componentes/Inicio';
 import { Aside } from '../layout/Aside';
@@ -6,7 +6,7 @@ import { Header } from '../layout/Header';
 import { Nav } from '../layout/Nav';
 
 export const Rutas = () => {
- 
+ const [listadoState, setListadoState] = useState([]);
   return (
     <BrowserRouter>
 
@@ -21,7 +21,7 @@ export const Rutas = () => {
             <Route path='/inicio' element={<Inicio/>}/>
           </Routes>
         </section>
-        <Aside/>
+        <Aside setListadoState={setListadoState}/>
 
       {/* Footer */}
         {/* <Footer /> */}
