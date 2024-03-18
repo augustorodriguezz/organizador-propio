@@ -45,7 +45,7 @@ export const Aside = ({setListadoState}) => {
   return (
     <aside className="lateral">
             <div className="add">
-                <h3 className="title">Añadir película</h3>
+                <h3 className="title">Añadir tarea</h3>
                 <form onSubmit={datosForm}>
                     <input 
                       type="text" 

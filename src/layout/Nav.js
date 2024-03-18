@@ -1,20 +1,22 @@
 import React, {useState, useEffect} from 'react'
+import { PageContent } from '../componentes/PageContent';
+import { NavLink } from 'react-router-dom'
 
-export const Nav = () => {
-    const [pages, setPages] = useState(() => {
-        const storedPages = localStorage.getItem('pages');
-        return storedPages ? JSON.parse(storedPages) : [
-          { id: 1, title: 'Inicio' },
-          { id: 2, title: 'Acerca de' },
-          { id: 3, title: 'Servicios' },
-          { id: 4, title: 'Contacto' },
-        ];
-      });
+export const Nav = ({pages, setPages}) => {
+    // const [pages, setPages] = useState(() => {
+    //     const storedPages = localStorage.getItem('pages');
+    //     return storedPages ? JSON.parse(storedPages) : [
+    //       { id: 1, title: 'Inicio' },
+    //       { id: 2, title: 'Acerca de' },
+    //       { id: 3, title: 'Servicios' },
+    //       { id: 4, title: 'Contacto' },
+    //     ];
+    //   });
       const [showAddPageForm, setShowAddPageForm] = useState(false);
       const [newPageTitle, setNewPageTitle] = useState('');
-      useEffect(() => {
-        localStorage.setItem('pages', JSON.stringify(pages));
-      }, [pages]);
+      // useEffect(() => {
+      //   localStorage.setItem('pages', JSON.stringify(pages));
+      // }, [pages]);
     
       const handleAddPage = () => {
         setShowAddPageForm(true);
@@ -31,23 +33,20 @@ export const Nav = () => {
   };
 
   const handleAcceptAddPage = () => {
-    const newPage = { id: pages.length + 1, title: newPageTitle };
+    const newPage = { id: pages.length + 1, 
+                      title: newPageTitle ,
+                      content: [] };
     setPages([...pages, newPage]);
     setShowAddPageForm(false);
     setNewPageTitle('');
   };
   return (
     <nav className="nav">
-        {/* <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Películas</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul> */}
+        
         <ul>
         {pages.map((page) => (
           <li key={page.id}>
-            <button>{page.title}</button>
+            <NavLink to={`/${page.title.toLowerCase()}`}>{page.title}</NavLink>
           </li>
         ))}
         {showAddPageForm ? (
