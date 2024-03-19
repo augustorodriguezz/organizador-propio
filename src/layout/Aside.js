@@ -1,47 +1,39 @@
 import React,{useState} from 'react'
 
-export const Aside = ({setListadoState}) => {
+export const Aside = ({setListadoState, numeroDePagina, currentPageTitle}) => {
 
   const [tareas, setTareas] = useState({
     titulo: '',
     descripcion:''
   })
+  
 
-  const clave = 'tareas'
-  const guardarEnStorage = (clave, elemento)=>{
-     //guardo el listado en el local storage
-     let elementos = JSON.parse(localStorage.getItem(clave));
-     if(Array.isArray(elementos)){
-       elementos.push(elemento);
-     }else{
-       elementos = [elemento];
-     }
-     localStorage.setItem(clave, JSON.stringify(elementos));
-     return elemento
-  }
+  const guardarEnStorage = (elemento) => {
+   
+    const clave = `${currentPageTitle}`;
+    let elementos = JSON.parse(localStorage.getItem(clave)) || [];
+    elementos.push(elemento);
+    localStorage.setItem(clave, JSON.stringify(elementos));
+    return elemento;
+  };
 
   const datosForm = (e) =>{
     e.preventDefault();
-    //coonsigo los valores del form
     let titulo = e.target.titulo.value;
     let descripcion = e.target.descripcion.value;
-    //creo el objeto con los datos
     let tarea = {
       id: new Date().getTime(),
       titulo, 
       descripcion
     }
-    //actualizo el estado
     setTareas(tarea);
-    //actualizo ahora el listado de elementos a mostrar en pantalla
-    setListadoState( elementos => {
-      return [...elementos, tarea];
-    });
-    guardarEnStorage('tareas', tarea);
+    // const clave= `${currentPageTitle}`;
+    // let elementos = JSON.parse(localStorage.getItem(clave));
+    // setListadoState([...elementos, tarea]);
+    guardarEnStorage(tarea);
    
   }
 
- 
   return (
     <aside className="lateral">
             <div className="add">

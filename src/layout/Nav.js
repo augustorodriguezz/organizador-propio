@@ -2,21 +2,11 @@ import React, {useState, useEffect} from 'react'
 import { PageContent } from '../componentes/PageContent';
 import { NavLink } from 'react-router-dom'
 
-export const Nav = ({pages, setPages}) => {
-    // const [pages, setPages] = useState(() => {
-    //     const storedPages = localStorage.getItem('pages');
-    //     return storedPages ? JSON.parse(storedPages) : [
-    //       { id: 1, title: 'Inicio' },
-    //       { id: 2, title: 'Acerca de' },
-    //       { id: 3, title: 'Servicios' },
-    //       { id: 4, title: 'Contacto' },
-    //     ];
-    //   });
+export const Nav = ({pages, setPages, setPageIndex, setCurrentPageTitle}) => {
+  
       const [showAddPageForm, setShowAddPageForm] = useState(false);
       const [newPageTitle, setNewPageTitle] = useState('');
-      // useEffect(() => {
-      //   localStorage.setItem('pages', JSON.stringify(pages));
-      // }, [pages]);
+      
     
       const handleAddPage = () => {
         setShowAddPageForm(true);
@@ -40,12 +30,16 @@ export const Nav = ({pages, setPages}) => {
     setShowAddPageForm(false);
     setNewPageTitle('');
   };
+
+  const pageClick = (index) => {
+    setPageIndex(index); 
+  };
   return (
     <nav className="nav">
         
         <ul>
-        {pages.map((page) => (
-          <li key={page.id}>
+        {pages.map((page, index) => (
+          <li key={page.id} onClick={() => {pageClick(index); setCurrentPageTitle(page.title);}}>
             <NavLink to={`/${page.title.toLowerCase()}`}>{page.title}</NavLink>
           </li>
         ))}
