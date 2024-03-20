@@ -5,6 +5,7 @@ body {
   text-align: center;
   padding: 0px;
   margin: 0px;
+  box-sizing: border-box;
 
 }
 .layout {
@@ -17,7 +18,7 @@ body {
   "content content content lateral"
   "footer footer footer footer"
   ;
-  grid-template-rows: 100px 170px auto 70px;
+  grid-template-rows: 100px 120px auto 70px;
 }
 /* ESTILOS DEL HEADER: */
 .header {
@@ -69,7 +70,7 @@ body {
   grid-area: content;
   background-color: #f6f7f9;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: flex-start;
   align-items: slex-start;
 }
@@ -94,7 +95,7 @@ button , input[type="submit"] , input[type="button"] {
   padding: 15px;
   border-radius: 3px;
   width: 100px;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   text-transform: capitalize;
   font-size: 16px;
   font-weight: 500;
@@ -114,7 +115,6 @@ button , input[type="submit"] , input[type="button"] {
   background-color: #f6f7f9;
   border-left: 1px solid #ddd;
   padding: 20px;
-
 }
 .lateral > div {
   box-sizing: border-box;
@@ -134,15 +134,23 @@ button , input[type="submit"] , input[type="button"] {
   border-radius: 5px;
   background-color: #f6f7f9;
   color: #454545;
-  max-width: 80%;
+  width: 70%;
   opacity: 4;
   outline: 0;
   border-color: transparent;
 }
+.lateral input[type="text"]{
+  font-size: 14px;
+}
+.lateral textarea{
+  font-family: sans-serif;
+  resize: none;
+  height: 100px;
+}
 
 
 /* ESTILOS DEL FOOTER: */
-.footer {
+.footer { 
   grid-area: footer;
   background-color: #d1defa;
   color: #454545;

@@ -26,9 +26,7 @@ export const PageContent = ({title, pages, numeroDePagina , listadoState, setLis
   
   return (
   <>
-  <div>
-  <h1>{title}</h1>
-  </div>
+  
     
     
     {

@@ -45,7 +45,7 @@ export const Aside = ({setListadoState, numeroDePagina, currentPageTitle}) => {
                       placeholder="Título"
                     />
                     <textarea
-                      placeholder="descripción" 
+                      placeholder="Descripción" 
                       name='descripcion'>
                     </textarea>
                     <input 

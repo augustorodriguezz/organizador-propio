@@ -16,7 +16,7 @@ export const Nav = ({pages, setPages, setPageIndex, setCurrentPageTitle}) => {
         const updatedPages = pages.filter((page) => page.id !== pageId);
         setPages(updatedPages);
       };
-      
+       
   const handleCancelAddPage = () => {
     setShowAddPageForm(false);
     setNewPageTitle('');
