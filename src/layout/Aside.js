@@ -27,9 +27,9 @@ export const Aside = ({setListadoState, numeroDePagina, currentPageTitle}) => {
       descripcion
     }
     setTareas(tarea);
-    // const clave= `${currentPageTitle}`;
-    // let elementos = JSON.parse(localStorage.getItem(clave));
-    // setListadoState([...elementos, tarea]);
+    const llave= `${currentPageTitle}`;
+    let objetos = JSON.parse(localStorage.getItem(llave));
+    setListadoState([...objetos, tarea]);
     guardarEnStorage(tarea);
    
   }

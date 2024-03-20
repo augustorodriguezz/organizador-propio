@@ -14,12 +14,13 @@ export const PageContent = ({title, pages, numeroDePagina , listadoState, setLis
     setListadoState(tareas);
   };
   const borrarTarea = (id) => {
-    let tareasAlmacenadas = conseguirTareas();
+    const claveB= `${currentPageTitle}`;
+    let tareasAlmacenadas = JSON.parse(localStorage.getItem(claveB));
     let nuevasTareas = tareasAlmacenadas.filter(tarea => tarea.id !== parseInt(id));
     setListadoState(nuevasTareas);
-    const clave= `${currentPageTitle}`;
+    const key= `${currentPageTitle}`;
    
-    localStorage.setItem(clave , JSON.stringify(nuevasTareas));
+    localStorage.setItem(key , JSON.stringify(nuevasTareas));
   };
   
   
