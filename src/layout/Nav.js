@@ -6,7 +6,7 @@ export const Nav = ({pages, setPages, setPageIndex, setCurrentPageTitle}) => {
   
       const [showAddPageForm, setShowAddPageForm] = useState(false);
       const [newPageTitle, setNewPageTitle] = useState('');
-      
+      const [isPageActive , setIsPageActive] = useState (false);
     
       const handleAddPage = () => {
         setShowAddPageForm(true);
@@ -39,7 +39,7 @@ export const Nav = ({pages, setPages, setPageIndex, setCurrentPageTitle}) => {
         
         <ul>
         {pages.map((page, index) => (
-          <li key={page.id} onClick={() => {pageClick(index); setCurrentPageTitle(page.title);}}>
+          <li key={page.id} className={isPageActive ? 'li2' : 'li'} onClick={() => {pageClick(index); setCurrentPageTitle(page.title);}}>
             <NavLink to={`/${page.title.toLowerCase()}`}>{page.title}</NavLink>
           </li>
         ))}

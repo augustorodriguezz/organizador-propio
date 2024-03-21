@@ -27,10 +27,10 @@ export const Aside = ({setListadoState, numeroDePagina, currentPageTitle}) => {
       descripcion
     }
     setTareas(tarea);
-    const llave= `${currentPageTitle}`;
-    let objetos = JSON.parse(localStorage.getItem(llave));
-    setListadoState([...objetos, tarea]);
-    guardarEnStorage(tarea);
+    const llave = `${currentPageTitle}`;
+  let objetos = JSON.parse(localStorage.getItem(llave)) || []; 
+  setListadoState([...objetos, tarea]); 
+  guardarEnStorage(tarea);
    
   }
 
@@ -49,8 +49,9 @@ export const Aside = ({setListadoState, numeroDePagina, currentPageTitle}) => {
                       name='descripcion'>
                     </textarea>
                     <input 
+                      className='save'
                       type="submit" 
-                      value="guardar"
+                      value="Guardar"
                     />
                 </form>
             </div>

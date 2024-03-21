@@ -12,7 +12,7 @@ export const Rutas = () => {
   const storedPages = localStorage.getItem('pages');
   return storedPages ? JSON.parse(storedPages) : [];
   });
-
+ 
   useEffect(() => {
     localStorage.setItem('pages', JSON.stringify(pages));
   }, [pages]);

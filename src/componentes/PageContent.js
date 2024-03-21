@@ -1,3 +1,5 @@
+import { faSquareCheck } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import React from 'react'
 
@@ -26,16 +28,16 @@ export const PageContent = ({title, pages, numeroDePagina , listadoState, setLis
   
   return (
   <>
-  
-    
-    
+
     {
             listadoState != null && listadoState.map( (tarea) => {
               return (
                 <article className="tarea-item" key={tarea.id}>
+                  <div className="tareaDiv">
                     <h3 className="title">{tarea.titulo}</h3>
                     <p className="description">{tarea.descripcion}</p>
-                    <button className="delete" onClick={()=> borrarTarea(tarea.id)} >Borrar</button>
+                  </div>
+                    <button className="delete" onClick={()=> borrarTarea(tarea.id)} ><FontAwesomeIcon className="icon" icon={faSquareCheck} /></button>
                 </article>
               )
             })
