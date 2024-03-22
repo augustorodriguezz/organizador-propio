@@ -139,14 +139,7 @@ body {
   z-index: 100;
 
 }
-.container {
-  transform: translateY(100%); 
-  transition: transform 0.5s ease-in-out;
-  width: 100%;
-}
-.loaded{
-  transform: translateY(0);
-}
+
 .tarea-item {
   display: flex;
   max-height: 150px;
