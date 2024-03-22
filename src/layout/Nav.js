@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { PageContent } from '../componentes/PageContent';
 import { NavLink } from 'react-router-dom'
+import { faCheck, faPlus, faTrash, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const Nav = ({pages, setPages, setPageIndex, setCurrentPageTitle}) => {
+export const Nav = ({pages, setPages, setPageIndex, setCurrentPageTitle, currentPageTitle}) => {
+  
   
       const [showAddPageForm, setShowAddPageForm] = useState(false);
       const [newPageTitle, setNewPageTitle] = useState('');
-      const [isPageActive , setIsPageActive] = useState (false);
     
       const handleAddPage = () => {
         setShowAddPageForm(true);
@@ -39,20 +41,29 @@ export const Nav = ({pages, setPages, setPageIndex, setCurrentPageTitle}) => {
         
         <ul>
         {pages.map((page, index) => (
-          <li key={page.id} className={isPageActive ? 'li2' : 'li'} onClick={() => {pageClick(index); setCurrentPageTitle(page.title);}}>
+          <li key={page.id} className={page.title === currentPageTitle ? 'li2' : 'li'} onClick={() => {pageClick(index); setCurrentPageTitle(page.title);}}>
             <NavLink to={`/${page.title.toLowerCase()}`}>{page.title}</NavLink>
           </li>
         ))}
         {showAddPageForm ? (
         <div>
-          <input type="text" value={newPageTitle} onChange={(e) => setNewPageTitle(e.target.value)} />
-          <button onClick={handleAcceptAddPage}>Aceptar</button>
-          <button onClick={handleCancelAddPage}>Cancelar</button>
+          <input type="text" value={newPageTitle} className='nuevaPagina'
+                 onChange={(e) => setNewPageTitle(e.target.value)} />
+          <button className='buttonNav check' onClick={handleAcceptAddPage} >
+            <FontAwesomeIcon className='checkIcon' icon={faCheck} />
+          </button>
+          <button className='buttonNav check' onClick={handleCancelAddPage}>
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
         </div>
       ) : (
-        <button onClick={handleAddPage}>Agregar Página</button>
+        <button className='buttonNav' onClick={handleAddPage}>
+          <FontAwesomeIcon icon={faPlus}/><br/>
+          <b>Agregar página</b>
+        </button>
       )}
-        <button onClick={() => handleRemovePage(pages[pages.length - 1].id)}>Eliminar Última Página</button>
+        <button className='buttonNav' onClick={() => handleRemovePage(pages[pages.length - 1].id)}>
+        <FontAwesomeIcon icon={faTrash} /><br/><b>Eliminar última</b></button>
       </ul>
     </nav>
   )

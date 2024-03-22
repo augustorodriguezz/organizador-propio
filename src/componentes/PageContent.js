@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import React from 'react'
 
 export const PageContent = ({title, pages, numeroDePagina , listadoState, setListadoState, currentPageTitle}) => {
+ 
   useEffect(()=> {
     console.log("componente del listado de tareas cargado!!");
-   
+    
     conseguirTareas();
   },[currentPageTitle]);
 

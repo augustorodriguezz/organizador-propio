@@ -5,6 +5,7 @@ import { Header } from '../layout/Header';
 import { Nav } from '../layout/Nav';
 import { PageContent } from '../componentes/PageContent';
 import { Bienvenida } from '../componentes/Bienvenida';
+import { Footer } from '../layout/Footer';
 
 export const Rutas = () => {
  const [listadoState, setListadoState] = useState([]);
@@ -12,6 +13,7 @@ export const Rutas = () => {
   const storedPages = localStorage.getItem('pages');
   return storedPages ? JSON.parse(storedPages) : [];
   });
+ 
  
   useEffect(() => {
     localStorage.setItem('pages', JSON.stringify(pages));
@@ -26,7 +28,7 @@ export const Rutas = () => {
       {/* Header de todo el viewport que incluya al nav */}
       <Header/>
       <Nav pages={pages} setPages= {setPages} setPageIndex={setPageIndex} 
-      setCurrentPageTitle={setCurrentPageTitle} />
+      setCurrentPageTitle={setCurrentPageTitle} currentPageTitle={currentPageTitle} />
       
         <section className="content">
         <Routes>
@@ -48,6 +50,7 @@ export const Rutas = () => {
         <Aside setListadoState={setListadoState} numeroDePagina={pageIndex} currentPageTitle={currentPageTitle} />
 
       {/* Footer */}
+      <Footer/>
         {/* <Footer /> */}
 
     </BrowserRouter>
